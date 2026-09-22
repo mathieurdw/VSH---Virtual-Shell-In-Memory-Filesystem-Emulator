@@ -1,0 +1,105 @@
+2:40
+directory \
+Sous_dossier_1 drwxr-xr-x 93
+Sous_dossier_2 drwxr-xr-x 1749
+Sous_dossier_3 drwxr-xr-x 688
+Fichier_0_1.txt -rw-r--r-- 63 1 3
+Fichier_0_2.sh -rwxr--r-- 12 4 1
+Fichier_0_3.sh -rw-r--r-- 34 5 3
+@
+directory \Sous_dossier_1
+Sous_dossier_1_A drwxr-xr-x 0
+Sous_dossier_1_B drwxr-xr-x 40
+fichier_1_1.txt -rw-r--r-- 53 8 2
+@
+directory \Sous_dossier_1\Sous_dossier_1_A
+@
+directory \Sous_dossier_1\Sous_dossier_1_B
+Fichier_1B_1.txt -rw-r--r-- 39 10 1
+@
+directory \Sous_dossier_2
+Sous_dossier_2_A.A drwxr-xr-x 1282
+Sous_dossier_2_B drwxr-xr-x 259
+Fichier_2_1 -rw-r--r-- 207 11 8
+@
+directory \Sous_dossier_2\Sous_dossier_2_A.A
+Fichier_2A_1.txt -rw-r--r-- 1282 19 3
+@
+directory \Sous_dossier_2\Sous_dossier_2_B
+Doss drwxr-xr-x 259
+@
+directory \Sous_dossier_2\Sous_dossier_2_B\Doss
+date.sh -rw-r--r-- 258 22 18
+@
+directory \Sous_dossier_3
+Fichier_3_1.sh -rw-r--r-- 412 40 24
+Fichier_3_2.sh -rw-r--r-- 108 64 1
+Fichier_3_3.sh -rw-r--r-- 92 65 1
+Fichier_3_4.sh -rw-r--r-- 69 66 1
+@
+C'est le fichier 0.1
+Il est a pour but d'exemple
+Bonne vacances
+echo bonjour
+file=$1
+set $(cat $1)
+ech $# $file
+Ceci est est le fichier 1.1
+Il ne sert que d'exemple
+Un texte de remplissage non automatique
+
+
+(($1*2)) #fait le test si cette opération marche
+if [ $? -eq 0 ]; then #le ? prend 0 si l'opération marche et 1 si c'est pas le cas
+	echo "$1 est un numérique"
+else
+	echo "$1 n'est pas un numérique"
+fi
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique urna ac nunc efficitur scelerisque. Ut convallis urna diam, at congue purus convallis vel. Morbi feugiat lobortis mi, ut hendrerit tellus convallis nec. Quisque vitae felis et odio dapibus feugiat id at mauris. Suspendisse eget lorem neque. Nulla pellentesque libero nisl, at vestibulum purus pulvinar vel. Phasellus dapibus diam quis libero vehicula luctus. Etiam id congue odio, at venenatis tortor. In eget aliquet ipsum. Cras vel risus massa.
+
+Mauris gravida consectetur tortor, aliquam tempor ante tincidunt sit amet. Aliquam blandit purus at pellentesque vehicula. Donec pharetra augue id risus fringilla, at tempus nulla consectetur. Etiam feugiat dictum ligula imperdiet rhoncus. Nulla odio diam, laoreet a mauris in, sagittis pulvinar ligula. Morbi a sem feugiat, aliquet eros ut, aliquam mi. Nullam vitae lacinia massa, faucibus cursus dui. Cras tempus tellus quam, vitae pulvinar tellus mattis posuere. Fusce vitae bibendum nisi. Fusce vel tempor risus. Vestibulum nisl ante, egestas ac viverra ac, ultricies consectetur diam. Quisque fermentum erat diam, vel rhoncus dolor pharetra ut. Quisque mollis ante nec condimentum suscipit. Duis at ex sit amet metus rhoncus rutrum dignissim feugiat arcu.
+set $(date)
+
+case $1 in
+	lun.)jour=lundi;;
+	mar.)jour=mardi;;
+	mer.)jour=mercredi;;
+	jeu.)jour=mercredi;;
+	ven.)jour=vendredi;;
+	sam.)jour=samedi;;
+	dim.)dimanche;;
+esac
+
+case $3 in
+	jan.)mois=Janvier;;
+	oct.)mois=Octobre;;
+esac
+
+echo $jour $2 $mois $4 à $5
+while read mot; do
+	taille=${#mot}
+	if [[  ! $1 =~ ^[0-9]+$ ]];then
+		exit
+	fi
+	if [ $1 -eq $taille ];then
+		flag=1
+		for i in ${@:2};do
+			if [[ ! $i =~ ^[a-z][0-9]$ ]];then
+				exit
+			fi
+			lettre=${i:0:1}
+			pos=$(echo $i | cut -c2)
+			char=$(echo $mot | cut -c$pos)
+			#char=${mot:$pos:1}
+			if [ $lettre != $char ];then
+				flag=0
+			fi		
+		done
+		if [ $flag -eq 1 ];then
+			echo $mot
+		fi	
+	fi
+done< words
+awk 'NR==1 {print} NR>1 {n=split($5,tab,"/"); if (tab[n]%2==0) print}' #n est le nombre d'element du tableau
+awk '{ mots += NF; caracteres += length+1 } END { print NR, mots, caracteres, FILENAME }' $1
+ls -l | awk 'NR>1 {tab[$4]+=$5} END{for (i in tab) print i, tab [i]}'

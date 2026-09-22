@@ -1,0 +1,3 @@
+C'est le fichier 0.1
+Il est a pour but d'exemple
+Bonne vacances

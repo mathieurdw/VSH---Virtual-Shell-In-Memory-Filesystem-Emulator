@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+ARCHIVES="./archives"
+LIBDIR="./libs"
+
+for f in \
+  "$LIBDIR/00_common.sh" \
+  "$LIBDIR/10_list.sh" \
+  "$LIBDIR/20_create.sh" \
+  "$LIBDIR/30_parse.sh" \
+  "$LIBDIR/40_paths.sh" \
+  "$LIBDIR/50_commands_basic.sh" \
+  "$LIBDIR/60_commands_edit.sh" \
+  "$LIBDIR/70_save.sh" \
+  "$LIBDIR/80_browse.sh" \
+  "$LIBDIR/90_extract.sh"
+do
+  [ ! -f "$f" ] && { echo "Erreur: lib manquante: $f"; exit 1; }
+  # shellcheck disable=SC1090
+  source "$f"
+done
+
+case "$1" in
+  -list)
+    vsh_list
+    ;;
+  -create)
+    # $2 = dossier à archiver, $4 = nom d'archive
+    vsh_create "$4" "$2"
+    ;;
+  -browse)
+    vsh_browse "$4"
+    ;;
+  -extract)
+    vsh_extract "$4"
+    ;;
+  *)
+    echo "Usage: ./vsh {-list|-create|-browse|-extract} dossier port archive"
+    exit 1
+    ;;
+esac

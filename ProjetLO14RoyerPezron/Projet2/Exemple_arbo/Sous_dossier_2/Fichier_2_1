@@ -1,0 +1,8 @@
+
+
+(($1*2)) #fait le test si cette opération marche
+if [ $? -eq 0 ]; then #le ? prend 0 si l'opération marche et 1 si c'est pas le cas
+	echo "$1 est un numérique"
+else
+	echo "$1 n'est pas un numérique"
+fi
