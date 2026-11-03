@@ -47,6 +47,10 @@ Projet2/
 
 ```
 
+**ENGLISH VERSION**
+
+
+
 # 🐚 VSH - Virtual Shell (Bash-based Virtual Shell)
 
 An interactive command-line environment (Virtual Shell) written entirely in **Bash**, designed to manipulate, navigate, and save an isolated virtual file tree completely detached from the host system.
